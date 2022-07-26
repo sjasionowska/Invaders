@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D _rigidbody;
 
-    private Vector2 _movement;
+    private Vector2 _movement = new Vector2(1, 0);
 
     [SerializeField]
     private float _velocity;
@@ -15,10 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-
-
     }
-
 
     private void Update()
     {
@@ -32,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rigidbody.MovePosition(_rigidbody.position + _movement * (_velocity * Time.fixedDeltaTime));
+       _rigidbody.MovePosition(_rigidbody.position + _movement * (_velocity * Time.fixedDeltaTime));
     }
 
     private void Shoot()
