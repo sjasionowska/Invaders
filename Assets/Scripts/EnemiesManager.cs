@@ -2,13 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-enum EnemyType
-{
-    Blue,
-    Green,
-    Red
-}
-
 public class EnemiesManager : MonoBehaviour
 {
     [SerializeField]
@@ -27,11 +20,12 @@ public class EnemiesManager : MonoBehaviour
 
     private void GenerateEnemies()
     {
-        for (int x = -12; x <= 12;)
+        for (int x = -12; x <= 12; x += 2)
         {
-            for (int y = 7; y >= 3;)
+            for (int y = 7; y >= 3; y -= 2)
             {
                 int prefabNo = Random.Range(0, 3);
+
                 switch (prefabNo)
                 {
                     case 0:
@@ -58,13 +52,7 @@ public class EnemiesManager : MonoBehaviour
                             break;
                         }
                 }
-
-                y -= 2;
             }
-
-            x += 2;
         }
-
     }
-
 }

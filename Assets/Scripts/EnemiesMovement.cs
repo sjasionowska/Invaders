@@ -26,20 +26,20 @@ public class EnemiesMovement : MonoBehaviour
     {
         for (; ; )
         {
-            if(!_movedLeft && !_movedRight)
+            if (!_movedLeft && !_movedRight)
             {
                 _rigidbody.MovePosition(_rigidbody.position + _movement * (_velocity * Time.fixedDeltaTime));
                 _movedRight = true;
             }
 
-            else if(_movedLeft)
+            else if (_movedLeft)
             {
                 _rigidbody.MovePosition(_rigidbody.position + _movement * (_velocity * Time.fixedDeltaTime));
                 _movedRight = true;
                 _movedLeft = false;
             }
 
-            else if(_movedRight)
+            else if (_movedRight)
             {
                 _rigidbody.MovePosition(_rigidbody.position - _movement * (_velocity * Time.fixedDeltaTime));
                 _movedRight = false;
