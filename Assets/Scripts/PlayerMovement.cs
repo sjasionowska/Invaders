@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-       _rigidbody.MovePosition(_rigidbody.position + _movement * (_velocity * Time.fixedDeltaTime));
+        _rigidbody.MovePosition(_rigidbody.position + _movement * (_velocity * Time.fixedDeltaTime));
     }
 
     private void Shoot()
