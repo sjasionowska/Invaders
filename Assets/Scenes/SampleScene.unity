@@ -123,6 +123,52 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &437692598
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 437692599}
+  - component: {fileID: 437692600}
+  m_Layer: 0
+  m_Name: BulletPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &437692599
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437692598}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &437692600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437692598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a706d62d6865ed94c93ecf7c769598a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _initialCount: 5
+  _bulletPrefab: {fileID: 3425475134588037346, guid: 12d60ab89e1d5c448ae12fc9c1a4a83a, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,9 +333,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37502f86c801ee5489ea46d4799aad69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blueEnemy: {fileID: 1808218440074747297, guid: 2a5a1f61b18159c4ab985175c34ba7a4, type: 3}
-  greenEnemy: {fileID: 9042510268619708862, guid: cb8c18e1ef025a446803a27640174371, type: 3}
-  redEnemy: {fileID: 8948852149387371720, guid: 7a613bba3efb74e4b8db9fa253ccdbb4, type: 3}
+  _blueEnemy: {fileID: 1808218440074747297, guid: 2a5a1f61b18159c4ab985175c34ba7a4, type: 3}
+  _greenEnemy: {fileID: 9042510268619708862, guid: cb8c18e1ef025a446803a27640174371, type: 3}
+  _redEnemy: {fileID: 8948852149387371720, guid: 7a613bba3efb74e4b8db9fa253ccdbb4, type: 3}
 --- !u!1 &1038112937
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,6 +348,7 @@ GameObject:
   - component: {fileID: 1038112938}
   - component: {fileID: 1038112940}
   - component: {fileID: 1038112941}
+  - component: {fileID: 1038112942}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -410,6 +457,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _velocity: 10
+--- !u!114 &1038112942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038112937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 551cf38b8cf87bc46b175d7b97aacd77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1205124047
 GameObject:
   m_ObjectHideFlags: 0

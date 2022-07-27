@@ -5,15 +5,15 @@ using UnityEngine;
 public class EnemiesManager : MonoBehaviour
 {
     [SerializeField]
-    private GameObject blueEnemy;
+    private GameObject _blueEnemy;
 
     [SerializeField]
-    private GameObject greenEnemy;
+    private GameObject _greenEnemy;
 
     [SerializeField]
-    private GameObject redEnemy;
+    private GameObject _redEnemy;
 
-    private int enemiesCount;
+    private int _enemiesCount;
 
     private void Start()
     {
@@ -32,19 +32,19 @@ public class EnemiesManager : MonoBehaviour
                 {
                     case 0:
                         {
-                            InstantiateEnemy(x, y, blueEnemy);
+                            InstantiateEnemy(x, y, _blueEnemy);
                             break;
                         }
 
                     case 1:
                         {
-                            InstantiateEnemy(x, y, greenEnemy);
+                            InstantiateEnemy(x, y, _greenEnemy);
                             break;
                         }
 
                     case 2:
                         {
-                            InstantiateEnemy(x, y, redEnemy);
+                            InstantiateEnemy(x, y, _redEnemy);
                             break;
                         }
                 }
@@ -54,9 +54,9 @@ public class EnemiesManager : MonoBehaviour
 
     private void InstantiateEnemy(int x, int y, GameObject enemyPrefab)
     {
-        var enemy = Instantiate(enemyPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        var enemy = Instantiate(enemyPrefab, Vector2.zero, Quaternion.identity);
         enemy.transform.parent = transform;
         enemy.transform.localPosition = new Vector2(x, y);
-        enemiesCount++;
+        _enemiesCount++;
     }
 }

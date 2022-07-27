@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float _velocity;
 
+
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -21,10 +22,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _movement.x = Input.GetAxisRaw("Horizontal");
 
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            Shoot();
-        }
+
     }
 
     private void FixedUpdate()
@@ -32,8 +30,5 @@ public class PlayerMovement : MonoBehaviour
         _rigidbody.MovePosition(_rigidbody.position + _movement * (_velocity * Time.fixedDeltaTime));
     }
 
-    private void Shoot()
-    {
-        Debug.Log("Shoot!");
-    }
+   
 }

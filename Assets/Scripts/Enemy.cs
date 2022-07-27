@@ -16,10 +16,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private float reloadTime;
 
-    private void Start()
-    {
-        
-    }
+ 
 
 }
 
