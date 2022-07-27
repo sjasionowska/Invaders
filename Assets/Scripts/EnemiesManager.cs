@@ -13,12 +13,14 @@ public class EnemiesManager : MonoBehaviour
     [SerializeField]
     private GameObject redEnemy;
 
+    private int enemiesCount;
+
     private void Start()
     {
-        GenerateEnemies();
+        InstantiateEnemies();
     }
 
-    private void GenerateEnemies()
+    private void InstantiateEnemies()
     {
         for (int x = -12; x <= 12; x += 2)
         {
@@ -30,29 +32,31 @@ public class EnemiesManager : MonoBehaviour
                 {
                     case 0:
                         {
-                            var enemy = Instantiate(blueEnemy, new Vector3(0, 0, 0), Quaternion.identity);
-                            enemy.transform.parent = transform;
-                            enemy.transform.localPosition = new Vector2(x, y);
+                            InstantiateEnemy(x, y, blueEnemy);
                             break;
                         }
 
                     case 1:
                         {
-                            var enemy = Instantiate(greenEnemy, new Vector3(0, 0, 0), Quaternion.identity);
-                            enemy.transform.parent = transform;
-                            enemy.transform.localPosition = new Vector2(x, y);
+                            InstantiateEnemy(x, y, greenEnemy);
                             break;
                         }
 
                     case 2:
                         {
-                            var enemy = Instantiate(redEnemy, new Vector3(0, 0, 0), Quaternion.identity);
-                            enemy.transform.parent = transform;
-                            enemy.transform.localPosition = new Vector2(x, y);
+                            InstantiateEnemy(x, y, redEnemy);
                             break;
                         }
                 }
             }
         }
+    }
+
+    private void InstantiateEnemy(int x, int y, GameObject enemyPrefab)
+    {
+        var enemy = Instantiate(enemyPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        enemy.transform.parent = transform;
+        enemy.transform.localPosition = new Vector2(x, y);
+        enemiesCount++;
     }
 }
