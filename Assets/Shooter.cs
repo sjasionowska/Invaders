@@ -6,13 +6,19 @@ public class Shooter : MonoBehaviour
 {
     private BulletPool _bulletPool;
 
-    [SerializeField]
     private int _damage;
+
+    private bool _isEnemy;
+
+    private bool _isPlayer;
 
     private void Start()
     {
         _bulletPool = (BulletPool)FindObjectOfType(typeof(BulletPool));
         if (_bulletPool == null) Debug.LogError("Could not find an object of type BulletPool.");
+
+        _isEnemy = this.gameObject.CompareTag("Enemy");
+        _isPlayer = this.gameObject.CompareTag("Player");
     }
 
     private void Update()
@@ -29,8 +35,9 @@ public class Shooter : MonoBehaviour
         bulletGameObject.transform.localPosition = this.transform.position;
         bulletGameObject.SetActive(true);
         bulletGameObject.GetComponent<Bullet>()._Damage = _damage;
+
     }
 
-  
+
 
 }
