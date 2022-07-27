@@ -3,9 +3,4 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BlueEnemy : Enemy
-{
-    private void Start()
-    {
-
-    }
-}
+{}

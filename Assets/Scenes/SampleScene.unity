@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 437692600}
   m_Layer: 0
   m_Name: BulletPool
-  m_TagString: Untagged
+  m_TagString: BulletPool
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -347,8 +347,8 @@ GameObject:
   - component: {fileID: 1038112939}
   - component: {fileID: 1038112938}
   - component: {fileID: 1038112940}
+  - component: {fileID: 1038112943}
   - component: {fileID: 1038112941}
-  - component: {fileID: 1038112942}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -457,7 +457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _velocity: 10
---- !u!114 &1038112942
+--- !u!114 &1038112943
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -466,9 +466,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1038112937}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 551cf38b8cf87bc46b175d7b97aacd77, type: 3}
+  m_Script: {fileID: 11500000, guid: 98477b8302fe3c944be9bb1e6450a866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shootingDamage: 1
+  shootingFrequency: 1
+  reloadTime: 1
 --- !u!1 &1205124047
 GameObject:
   m_ObjectHideFlags: 0

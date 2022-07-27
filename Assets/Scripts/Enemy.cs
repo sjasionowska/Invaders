@@ -5,18 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : Shooter
 {
-    [SerializeField]
-    private int shootingDamage;
 
-    [SerializeField]
-    private float shootingFrequency;
-
-    [SerializeField]
-    private float reloadTime;
-
- 
 
 }
 

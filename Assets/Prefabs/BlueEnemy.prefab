@@ -98,9 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95782fd86597cd143bd53b53d754f460, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootingDamage: 0
-  shootingFrequency: 0
-  reloadTime: 0
+  shootingDamage: 1
+  shootingFrequency: 3
+  reloadTime: 10
 --- !u!61 &-7094575652510491754
 BoxCollider2D:
   m_ObjectHideFlags: 0

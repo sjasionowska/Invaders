@@ -12,7 +12,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float _velocity;
 
-
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -21,8 +20,6 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         _movement.x = Input.GetAxisRaw("Horizontal");
-
-
     }
 
     private void FixedUpdate()

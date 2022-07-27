@@ -2,9 +2,43 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Bullet : MonoBehaviour
 {
+    [SerializeField]
+    private float _velocity;
+
+    private Vector2 _movement = new(0, 1);
+
     private int _damage = 1;
+
+    private Rigidbody2D _rigidbody;
+
+    private float _shootingFrequency = 0.1f;
+
+    public float ShootingFrequency
+    {
+        get => _shootingFrequency;
+        set
+        {
+            if (value == ShootingFrequency)
+            {
+                return;
+            }
+            else if (value < 0.01f)
+            {
+                Debug.LogError("Shooting frequency of a bullet can't be lower than 0.01.");
+                return;
+            }
+            else if (value > 10f)
+            {
+                Debug.LogError("Shooting frequency of a bullet can't be bigger than 10.");
+                return;
+            }
+
+            _shootingFrequency = value;
+        }
+    }
 
     public int _Damage
     {
@@ -30,8 +64,25 @@ public class Bullet : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        _rigidbody = GetComponent<Rigidbody2D>();
+    }
+
     public void Shoot()
     {
+        StartCoroutine(nameof(ShootWithFrequency));
+    }
 
+    private IEnumerator ShootWithFrequency()
+    {
+        for (; ; )
+        {
+            _rigidbody.MovePosition(_rigidbody.position + _movement * (_velocity * Time.fixedDeltaTime));
+            Debug.Log(Time.fixedDeltaTime);
+            yield return new WaitForSeconds(1/ShootingFrequency);
+        }
     }
 }
+
+

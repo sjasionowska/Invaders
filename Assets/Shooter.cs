@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class Shooter : MonoBehaviour
 {
+    [SerializeField]
+    protected int shootingDamage;
+
+    [SerializeField]
+    protected float shootingFrequency;
+
+    [SerializeField]
+    protected float reloadTime;
+
     private BulletPool _bulletPool;
 
     private int _damage;
@@ -21,23 +30,16 @@ public class Shooter : MonoBehaviour
         _isPlayer = this.gameObject.CompareTag("Player");
     }
 
-    private void Update()
-    {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            Shoot();
-        }
-    }
 
-    private void Shoot()
+
+    protected void Shoot()
     {
         var bulletGameObject = _bulletPool.transform.GetChild(0).gameObject;
+        bulletGameObject.transform.position = Vector2.zero;
         bulletGameObject.transform.localPosition = this.transform.position;
         bulletGameObject.SetActive(true);
-        bulletGameObject.GetComponent<Bullet>()._Damage = _damage;
-
+        bulletGameObject.GetComponent<Bullet>()._Damage = shootingDamage;
+        bulletGameObject.GetComponent<Bullet>().ShootingFrequency = shootingFrequency;
+        bulletGameObject.GetComponent<Bullet>().Shoot();
     }
-
-
-
 }
