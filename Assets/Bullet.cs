@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent (typeof(BoxCollider2D))]
 public class Bullet : MonoBehaviour
 {
     [SerializeField]
@@ -79,10 +80,14 @@ public class Bullet : MonoBehaviour
         for (; ; )
         {
             _rigidbody.MovePosition(_rigidbody.position + _movement * (_velocity * Time.fixedDeltaTime));
-            Debug.Log("_velocity " + _velocity);
-            Debug.Log("seconds " + 1 / ShootingFrequency);
             yield return new WaitForSeconds(1/ShootingFrequency);
         }
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("on trigger enter bullet with " + collision.gameObject);
     }
 }
 
