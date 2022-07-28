@@ -8,7 +8,7 @@ public class Shooter : MonoBehaviour
     protected int shootingDamage;
 
     [SerializeField]
-    protected float shootingFrequency;
+    protected float bulletVelocity;
 
     [SerializeField]
     protected float reloadTime;
@@ -39,7 +39,7 @@ public class Shooter : MonoBehaviour
         bulletGameObject.transform.localPosition = this.transform.position;
         bulletGameObject.SetActive(true);
         bulletGameObject.GetComponent<Bullet>()._Damage = shootingDamage;
-        bulletGameObject.GetComponent<Bullet>().ShootingFrequency = shootingFrequency;
+        bulletGameObject.GetComponent<Bullet>().ShootingFrequency = bulletVelocity;
         bulletGameObject.GetComponent<Bullet>().Shoot();
     }
 }

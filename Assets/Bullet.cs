@@ -30,9 +30,9 @@ public class Bullet : MonoBehaviour
                 Debug.LogError("Shooting frequency of a bullet can't be lower than 0.01.");
                 return;
             }
-            else if (value > 10f)
+            else if (value > 1000f)
             {
-                Debug.LogError("Shooting frequency of a bullet can't be bigger than 10.");
+                Debug.LogError("Shooting frequency of a bullet can't be bigger than 1000.");
                 return;
             }
 
@@ -79,7 +79,8 @@ public class Bullet : MonoBehaviour
         for (; ; )
         {
             _rigidbody.MovePosition(_rigidbody.position + _movement * (_velocity * Time.fixedDeltaTime));
-            Debug.Log(Time.fixedDeltaTime);
+            Debug.Log("_velocity " + _velocity);
+            Debug.Log("seconds " + 1 / ShootingFrequency);
             yield return new WaitForSeconds(1/ShootingFrequency);
         }
     }

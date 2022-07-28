@@ -470,7 +470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootingDamage: 1
-  shootingFrequency: 1
+  bulletVelocity: 1000
   reloadTime: 1
 --- !u!1 &1205124047
 GameObject:

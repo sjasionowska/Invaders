@@ -24,8 +24,19 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rigidbody.MovePosition(_rigidbody.position + _movement * (_velocity * Time.fixedDeltaTime));
+        if (_rigidbody.position.x < -15.3f)
+        {
+            _rigidbody.MovePosition(new Vector2(_rigidbody.position.x + 0.1f, _rigidbody.position.y));
+        }
+        else if (_rigidbody.position.x > 15.3f)
+        {
+            _rigidbody.MovePosition(new Vector2(_rigidbody.position.x - 0.1f, _rigidbody.position.y));
+        }
+        else
+        {
+            _rigidbody.MovePosition(_rigidbody.position + _movement * (_velocity * Time.fixedDeltaTime));
+        }
     }
 
-   
+
 }
