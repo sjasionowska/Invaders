@@ -10,8 +10,4 @@ public class Entity : MonoBehaviour
 
     private int _currentLifesCount;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log("on trigger enter " + collision.gameObject);
-    }
 }

@@ -30,16 +30,14 @@ public class Shooter : MonoBehaviour
         _isPlayer = this.gameObject.CompareTag("Player");
     }
 
-
-
     protected void Shoot()
     {
         var bulletGameObject = _bulletPool.transform.GetChild(0).gameObject;
         bulletGameObject.transform.position = Vector2.zero;
         bulletGameObject.transform.localPosition = this.transform.position;
         bulletGameObject.SetActive(true);
-        bulletGameObject.GetComponent<Bullet>()._Damage = shootingDamage;
-        bulletGameObject.GetComponent<Bullet>().ShootingFrequency = bulletVelocity;
+        bulletGameObject.GetComponent<Bullet>().Damage = shootingDamage;
+        bulletGameObject.GetComponent<Bullet>().Velocity = bulletVelocity;
         bulletGameObject.GetComponent<Bullet>().Shoot();
     }
 }

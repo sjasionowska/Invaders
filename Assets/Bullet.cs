@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent (typeof(BoxCollider2D))]
+[RequireComponent(typeof(BoxCollider2D))]
 public class Bullet : MonoBehaviour
 {
-    [SerializeField]
     private float _velocity;
 
     private Vector2 _movement = new(0, 1);
@@ -15,38 +14,12 @@ public class Bullet : MonoBehaviour
 
     private Rigidbody2D _rigidbody;
 
-    private float _shootingFrequency = 0.1f;
-
-    public float ShootingFrequency
-    {
-        get => _shootingFrequency;
-        set
-        {
-            if (value == ShootingFrequency)
-            {
-                return;
-            }
-            else if (value < 0.01f)
-            {
-                Debug.LogError("Shooting frequency of a bullet can't be lower than 0.01.");
-                return;
-            }
-            else if (value > 1000f)
-            {
-                Debug.LogError("Shooting frequency of a bullet can't be bigger than 1000.");
-                return;
-            }
-
-            _shootingFrequency = value;
-        }
-    }
-
-    public int _Damage
+    public int Damage
     {
         get => _damage;
         set
         {
-            if (value == _Damage)
+            if (value == Damage)
             {
                 return;
             }
@@ -65,9 +38,19 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    private void OnEnable()
+    public float Velocity
     {
-        _rigidbody = GetComponent<Rigidbody2D>();
+        get => _velocity;
+        set
+        {
+            if (value < 0.1f)
+            {
+                Debug.LogError("Velocity of a bullet can't be lower than 0.1f.");
+                return;
+            }
+
+            _velocity = value;
+        }
     }
 
     public void Shoot()
@@ -75,12 +58,17 @@ public class Bullet : MonoBehaviour
         StartCoroutine(nameof(ShootWithFrequency));
     }
 
+    private void OnEnable()
+    {
+        _rigidbody = GetComponent<Rigidbody2D>();
+    }
+
     private IEnumerator ShootWithFrequency()
     {
         for (; ; )
         {
-            _rigidbody.MovePosition(_rigidbody.position + _movement * (_velocity * Time.fixedDeltaTime));
-            yield return new WaitForSeconds(1/ShootingFrequency);
+            _rigidbody.MovePosition(_rigidbody.position + _movement * _velocity * Time.fixedDeltaTime);
+            yield return new WaitForSeconds(0.001f);
         }
     }
 

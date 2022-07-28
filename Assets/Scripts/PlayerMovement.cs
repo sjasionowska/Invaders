@@ -37,6 +37,4 @@ public class PlayerMovement : MonoBehaviour
             _rigidbody.MovePosition(_rigidbody.position + _movement * (_velocity * Time.fixedDeltaTime));
         }
     }
-
-
 }

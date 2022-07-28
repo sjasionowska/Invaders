@@ -12,16 +12,9 @@ public class BulletPool : MonoBehaviour
 
     private int _currentCount;
 
-    // Start is called before the first frame update
     void Start()
     {
         CreatePool();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     private void CreatePool()
