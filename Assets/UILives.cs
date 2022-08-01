@@ -39,13 +39,7 @@ public class UILives : MonoBehaviour
     private void OnLivesCountUpdated(int currentLives)
     {
         var activeChildren = _list.FindAll(x => x.activeSelf);
-        Debug.Log("activeChildren " + activeChildren.Count);
-        Debug.Log("current lives " + currentLives);
-      
-
-
         var numberOfChildrenToRemove = activeChildren.Count - currentLives;
-        Debug.Log("numberOfChildrenToRemove " + numberOfChildrenToRemove);
 
         for (int i = 0; i < numberOfChildrenToRemove; i++)
         {
@@ -53,6 +47,5 @@ public class UILives : MonoBehaviour
         }
 
         var activeChildrenAfterRemoval = _list.FindAll(x => x.activeSelf);
-        Debug.Log("activeChildrenAfterRemoval " + activeChildrenAfterRemoval.Count);
     }
 }

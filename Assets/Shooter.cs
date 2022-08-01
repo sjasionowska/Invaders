@@ -11,7 +11,7 @@ public class Shooter : MonoBehaviour
     protected float bulletVelocity;
 
     [SerializeField]
-    [Range(0f, 5f)]
+    [Range(0f, 10f)]
     protected float _reloadTime;
 
     private BulletPool _bulletPool;
@@ -38,9 +38,12 @@ public class Shooter : MonoBehaviour
         _isEnemy = this.gameObject.CompareTag("Enemy");
         _isPlayer = this.gameObject.CompareTag("Player");
 
-        _loaded = true;
-
         _defaultColor = this.gameObject.GetComponent<SpriteRenderer>().color;
+
+        _loaded = false;
+        SetUnloadedColor();
+
+        StartCoroutine(nameof(InitialLoad));
     }
 
     protected void Shoot()
@@ -99,5 +102,18 @@ public class Shooter : MonoBehaviour
 
         _loaded = true;
         SetLoadedColor();
+    }   
+    
+    private IEnumerator InitialLoad()
+    {
+        if (_loaded) yield return null;
+
+        if(_isPlayer) yield return new WaitForSeconds(0.5f);
+        else yield return new WaitForSeconds(3f);
+
+        _loaded = true;
+        SetLoadedColor();
     }
+
+
 }

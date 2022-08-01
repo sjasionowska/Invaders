@@ -19,6 +19,8 @@ public class Entity : MonoBehaviour
 
     private EnemiesManager _enemiesManager;
 
+    public event Action PlayerDied;
+
     private void Awake()
     {
         LivesCountUpdated += OnLivesCountUpdated;
@@ -57,7 +59,6 @@ public class Entity : MonoBehaviour
         {
             _currentLifesCount -= bullet.Damage;
             LivesCountUpdated?.Invoke(_currentLifesCount);
-            Debug.Log("[debug] Current lives count: " + this.gameObject + ": " + _currentLifesCount);
         }
     }
 
@@ -69,6 +70,9 @@ public class Entity : MonoBehaviour
     private void Die()
     {
         if (_isEnemy) _enemiesManager.OnChildDied();
+
         Destroy(this.gameObject);
+
+        if (_isPlayer) PlayerDied?.Invoke();
     }
 }

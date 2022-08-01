@@ -27,12 +27,11 @@ public class Enemy : Shooter
         {
             int chanceWillShoot = UnityEngine.Random.Range(0, 101);
 
-            if (chanceWillShoot <= _shootingProbability)
-            {
-                Shoot();
-            }
+            if (chanceWillShoot <= _shootingProbability) Shoot();
 
-            yield return new WaitForSeconds(1f);
+            var waitingTime = UnityEngine.Random.Range(1f, 3f);
+
+            yield return new WaitForSeconds(waitingTime);
         }
     }
 }

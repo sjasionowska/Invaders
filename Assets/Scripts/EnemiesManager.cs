@@ -1,18 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemiesManager : MonoBehaviour
 {
+    public event Action AllEnemiesDied;
+
     [SerializeField]
-    [Range(1, 13)]
+    [Range(1, 9)]
     private int _enemiesHorizontalCount;
 
     [SerializeField]
     [Range(1, 3)]
     private int _enemiesVerticalCount;
 
-    private int _initialXEnemyPosition = -12;
+    private int _initialXEnemyPosition = -10;
 
     private int _initialYEnemyPosition = 7;
 
@@ -38,7 +41,7 @@ public class EnemiesManager : MonoBehaviour
         {
             for (int j = 0; j < _enemiesVerticalCount; j++)
             {
-                int prefabNo = Random.Range(0, 3);
+                int prefabNo = UnityEngine.Random.Range(0, 3);
 
                 switch (prefabNo)
                 {
@@ -54,8 +57,8 @@ public class EnemiesManager : MonoBehaviour
                     case 1:
                         {
                             InstantiateEnemy(
-                                _initialXEnemyPosition + i * 2, 
-                                _initialYEnemyPosition - 2 * j, 
+                                _initialXEnemyPosition + i * 2,
+                                _initialYEnemyPosition - 2 * j,
                                 _greenEnemy);
                             break;
                         }
@@ -114,10 +117,7 @@ public class EnemiesManager : MonoBehaviour
     public void OnChildDied()
     {
         _enemiesCount--;
-
-        if ( _enemiesCount <= 0 )
-        {
-            Debug.LogWarning("[debug] game finished, player won");
-        }
+        if (_enemiesCount == 0)
+            AllEnemiesDied?.Invoke();
     }
 }

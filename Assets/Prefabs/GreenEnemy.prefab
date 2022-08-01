@@ -126,9 +126,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootingDamage: 2
-  bulletVelocity: 15
-  _reloadTime: 2
-  _shootingProbability: 15
+  bulletVelocity: 11
+  _reloadTime: 5
+  _shootingProbability: 25
 --- !u!114 &1268225246106877672
 MonoBehaviour:
   m_ObjectHideFlags: 0
