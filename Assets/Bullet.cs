@@ -96,18 +96,11 @@ public class Bullet : MonoBehaviour
 
     private IEnumerator StopMovingAfterTime()
     {
-        //Print the time of when the function is first called.
-        Debug.Log("Started Coroutine at timestamp : " + Time.time);
-
-        //yield on a new YieldInstruction that waits for 5 seconds.
         yield return new WaitForSeconds(_setInactiveAfterSeconds);
 
         _canMove = false;
         this.gameObject.SetActive(false);
         StopCoroutine(nameof(ShootWithFrequency));
-
-        //After we have waited 5 seconds print the time again.
-        Debug.Log("Finished Coroutine at timestamp : " + Time.time);
     }
 
 

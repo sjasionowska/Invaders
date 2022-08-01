@@ -333,6 +333,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37502f86c801ee5489ea46d4799aad69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemiesHorizontalCount: 3
+  _enemiesVerticalCount: 1
   _blueEnemy: {fileID: 1808218440074747297, guid: 2a5a1f61b18159c4ab985175c34ba7a4, type: 3}
   _greenEnemy: {fileID: 9042510268619708862, guid: cb8c18e1ef025a446803a27640174371, type: 3}
   _redEnemy: {fileID: 8948852149387371720, guid: 7a613bba3efb74e4b8db9fa253ccdbb4, type: 3}

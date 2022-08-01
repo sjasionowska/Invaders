@@ -5,6 +5,18 @@ using UnityEngine;
 public class EnemiesManager : MonoBehaviour
 {
     [SerializeField]
+    [Range(1, 13)]
+    private int _enemiesHorizontalCount;
+
+    [SerializeField]
+    [Range(1, 3)]
+    private int _enemiesVerticalCount;
+
+    private int _initialXEnemyPosition = -12;
+
+    private int _initialYEnemyPosition = 7;
+
+    [SerializeField]
     private GameObject _blueEnemy;
 
     [SerializeField]
@@ -22,9 +34,9 @@ public class EnemiesManager : MonoBehaviour
 
     private void InstantiateEnemies()
     {
-        for (int x = -12; x <= 12; x += 2)
+        for (int i = 0; i < _enemiesHorizontalCount; i++)
         {
-            for (int y = 7; y >= 3; y -= 2)
+            for (int j = 0; j < _enemiesVerticalCount; j++)
             {
                 int prefabNo = Random.Range(0, 3);
 
@@ -32,24 +44,63 @@ public class EnemiesManager : MonoBehaviour
                 {
                     case 0:
                         {
-                            InstantiateEnemy(x, y, _blueEnemy);
+                            InstantiateEnemy(
+                                _initialXEnemyPosition + i * 2,
+                                _initialYEnemyPosition - 2 * j,
+                                _blueEnemy);
                             break;
                         }
 
                     case 1:
                         {
-                            InstantiateEnemy(x, y, _greenEnemy);
+                            InstantiateEnemy(
+                                _initialXEnemyPosition + i * 2, 
+                                _initialYEnemyPosition - 2 * j, 
+                                _greenEnemy);
                             break;
                         }
 
                     case 2:
                         {
-                            InstantiateEnemy(x, y, _redEnemy);
+                            InstantiateEnemy(
+                                _initialXEnemyPosition + i * 2,
+                                _initialYEnemyPosition - 2 * j,
+                                _redEnemy);
                             break;
                         }
                 }
             }
         }
+
+        // old way of counting enemies position
+        //for (int x = -12; x <= 12; x += 2)
+        //{
+        //    for (int y = 7; y >= 3; y -= 2)
+        //    {
+        //        int prefabNo = Random.Range(0, 3);
+
+        //        switch (prefabNo)
+        //        {
+        //            case 0:
+        //                {
+        //                    InstantiateEnemy(x, y, _blueEnemy);
+        //                    break;
+        //                }
+
+        //            case 1:
+        //                {
+        //                    InstantiateEnemy(x, y, _greenEnemy);
+        //                    break;
+        //                }
+
+        //            case 2:
+        //                {
+        //                    InstantiateEnemy(x, y, _redEnemy);
+        //                    break;
+        //                }
+        //        }
+        //    }
+        //}
     }
 
     private void InstantiateEnemy(int x, int y, GameObject enemyPrefab)
