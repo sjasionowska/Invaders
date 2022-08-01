@@ -110,4 +110,14 @@ public class EnemiesManager : MonoBehaviour
         enemy.transform.localPosition = new Vector2(x, y);
         _enemiesCount++;
     }
+
+    public void OnChildDied()
+    {
+        _enemiesCount--;
+
+        if ( _enemiesCount <= 0 )
+        {
+            Debug.LogWarning("[debug] game finished, player won");
+        }
+    }
 }

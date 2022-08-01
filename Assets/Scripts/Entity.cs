@@ -17,6 +17,8 @@ public class Entity : MonoBehaviour
 
     public event Action<int> LifesCountUpdated;
 
+    private EnemiesManager _enemiesManager;
+
     private void Awake()
     {
         LifesCountUpdated += OnLifesCountUpdated;
@@ -38,6 +40,11 @@ public class Entity : MonoBehaviour
         }
 
         _currentLifesCount = _initialLifesCount;
+
+        if (!_isEnemy) return;
+
+        _enemiesManager = GetComponentInParent<EnemiesManager>();
+        if (_enemiesManager == null) Debug.LogError("Enemy couldn't find EnemiesManager in its parents.");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -56,6 +63,12 @@ public class Entity : MonoBehaviour
 
     private void OnLifesCountUpdated(int currentLifesCount)
     {
-        if (currentLifesCount <= 0) Destroy(this.gameObject);
+        if (currentLifesCount <= 0) Die();
+    }
+
+    private void Die()
+    {
+        _enemiesManager.OnChildDied();
+        Destroy(this.gameObject);
     }
 }
