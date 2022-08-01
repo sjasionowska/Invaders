@@ -15,7 +15,7 @@ public class EnemiesManager : MonoBehaviour
     [Range(1, 3)]
     private int _enemiesVerticalCount;
 
-    private int _initialXEnemyPosition = -10;
+    private int _initialXEnemyPosition = -9;
 
     private int _initialYEnemyPosition = 7;
 

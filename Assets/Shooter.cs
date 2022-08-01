@@ -82,6 +82,8 @@ public class Shooter : MonoBehaviour
             Debug.LogError("Bullet can be shot only by a player or an enemy.");
             return;
         }
+
+        bulletObject.GetComponent<SpriteRenderer>().color = _defaultColor;
     }
 
     private void SetUnloadedColor()
