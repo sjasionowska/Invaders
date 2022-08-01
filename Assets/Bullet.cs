@@ -14,6 +14,20 @@ public class Bullet : MonoBehaviour
 
     private Rigidbody2D _rigidbody;
 
+    private bool _shotByPlayer;
+
+    private bool _shotByEnemy;
+
+    public bool ShotByEnemy
+    {
+        get; set;
+    }
+
+    public bool ShotByPlayer
+    {
+        get; set;
+    }
+
     public int Damage
     {
         get => _damage;
@@ -75,7 +89,9 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("on trigger enter bullet with " + collision.gameObject);
+        if ((ShotByPlayer && collision.CompareTag("Enemy")
+            || (ShotByEnemy && collision.CompareTag("Player"))))
+            this.gameObject.SetActive(false);
     }
 }
 

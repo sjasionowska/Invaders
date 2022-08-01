@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2249936906973798466}
   - component: {fileID: 203619626198423558}
   - component: {fileID: -7085557000535921275}
+  - component: {fileID: 1268225246106877672}
   m_Layer: 0
   m_Name: GreenEnemy
   m_TagString: Enemy
@@ -125,5 +126,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootingDamage: 2
-  shootingFrequency: 2
+  bulletVelocity: 0
   reloadTime: 8
+--- !u!114 &1268225246106877672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9042510268619708862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4523a2043d638e40be28f6fd7699cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _initialLifesCount: 1

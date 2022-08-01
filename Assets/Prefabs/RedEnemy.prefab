@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1823729422121453626}
   - component: {fileID: -708343923602160154}
   - component: {fileID: 3533925190470304734}
+  - component: {fileID: -6983329256934654288}
   m_Layer: 0
   m_Name: RedEnemy
   m_TagString: Enemy
@@ -125,5 +126,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootingDamage: 3
-  shootingFrequency: 1
+  bulletVelocity: 0
   reloadTime: 5
+--- !u!114 &-6983329256934654288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8948852149387371720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4523a2043d638e40be28f6fd7699cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _initialLifesCount: 1

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3356471911727587168}
   - component: {fileID: -7094575652510491754}
   - component: {fileID: 8657670094464513873}
+  - component: {fileID: 2568773218919291115}
   m_Layer: 0
   m_Name: BlueEnemy
   m_TagString: Enemy
@@ -149,3 +150,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &2568773218919291115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808218440074747297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4523a2043d638e40be28f6fd7699cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _initialLifesCount: 1
