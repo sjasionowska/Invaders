@@ -31,8 +31,8 @@ public class Entity : MonoBehaviour
 
     private void Start()
     {
-        _isEnemy = this.gameObject.GetComponent<Enemy>() != null;
-        if (!_isEnemy) _isPlayer = this.gameObject.GetComponent<Player>() != null;
+        _isEnemy = this.gameObject.CompareTag("Enemy");
+        if (!_isEnemy) _isPlayer = this.gameObject.CompareTag("Player");
 
         if (!_isEnemy && !_isPlayer)
         {

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : Shooter
 {
+
+
     private void Update()
     {
         if (Input.GetKeyUp(KeyCode.Space))

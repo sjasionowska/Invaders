@@ -11,7 +11,7 @@ public class Shooter : MonoBehaviour
     protected float bulletVelocity;
 
     [SerializeField]
-    [Range(0f, 2f)]
+    [Range(0f, 5f)]
     protected float _reloadTime;
 
     private BulletPool _bulletPool;
