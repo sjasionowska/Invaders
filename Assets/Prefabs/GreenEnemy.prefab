@@ -127,7 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingDamage: 2
   bulletVelocity: 0
-  reloadTime: 8
+  _reloadTime: 1
 --- !u!114 &1268225246106877672
 MonoBehaviour:
   m_ObjectHideFlags: 0

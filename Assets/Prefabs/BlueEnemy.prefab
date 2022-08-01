@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingDamage: 1
   bulletVelocity: 0
-  reloadTime: 10
+  _reloadTime: 1
 --- !u!61 &-7094575652510491754
 BoxCollider2D:
   m_ObjectHideFlags: 0

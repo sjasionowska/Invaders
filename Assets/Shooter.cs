@@ -11,13 +11,18 @@ public class Shooter : MonoBehaviour
     protected float bulletVelocity;
 
     [SerializeField]
-    protected float reloadTime;
+    [Range(0f, 2f)]
+    protected float _reloadTime;
 
     private BulletPool _bulletPool;
 
     private bool _isEnemy;
 
     private bool _isPlayer;
+
+    private bool _loaded;
+
+    private Color _defaultColor;
 
     private void Start()
     {
@@ -27,10 +32,16 @@ public class Shooter : MonoBehaviour
 
         _isEnemy = this.gameObject.CompareTag("Enemy");
         _isPlayer = this.gameObject.CompareTag("Player");
+
+        _loaded = true;
+
+        _defaultColor = this.gameObject.GetComponent<SpriteRenderer>().color;
     }
 
     protected void Shoot()
     {
+        if (!_loaded) return;
+
         var bulletGameObject = _bulletPool.GetObject();
         bulletGameObject.transform.position = Vector2.zero;
         bulletGameObject.transform.localPosition = this.transform.position;
@@ -47,5 +58,29 @@ public class Shooter : MonoBehaviour
 
         bulletGameObject.GetComponent<Bullet>().Shoot();
 
+        _loaded = false;
+        SetUnloadedColor();
+
+        StartCoroutine(nameof(Load));
+    }
+
+    private void SetUnloadedColor()
+    {
+        this.gameObject.GetComponent<SpriteRenderer>().color = new Color(_defaultColor.r, _defaultColor.b, _defaultColor.g, 0.5f);
+    }
+
+    private void SetLoadedColor()
+    {
+        this.gameObject.GetComponent<SpriteRenderer>().color = new Color(_defaultColor.r, _defaultColor.b, _defaultColor.g, _defaultColor.a);
+    }
+
+    private IEnumerator Load()
+    {
+        if(_loaded) yield return null;
+
+        yield return new WaitForSeconds(_reloadTime);
+
+        _loaded = true;
+        SetLoadedColor();
     }
 }
