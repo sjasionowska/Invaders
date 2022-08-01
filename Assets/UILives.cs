@@ -43,9 +43,7 @@ public class UILives : MonoBehaviour
 
         for (int i = 0; i < numberOfChildrenToRemove; i++)
         {
-            _list.FindLast(x => x.activeSelf).SetActive(false);
+            _list.FindLast(x => x.activeSelf)?.SetActive(false);
         }
-
-        var activeChildrenAfterRemoval = _list.FindAll(x => x.activeSelf);
     }
 }

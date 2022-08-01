@@ -40,8 +40,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyUp(KeyCode.Escape))
-            Application.Quit();
+        //if(Input.GetKeyUp(KeyCode.Escape))
+        //    Application.Quit();
     }
 
     private void OnPlayerDied()
