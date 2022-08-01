@@ -31,10 +31,9 @@ public class Shooter : MonoBehaviour
 
     protected void Shoot()
     {
-        var bulletGameObject = _bulletPool.transform.GetChild(0).gameObject;
+        var bulletGameObject = _bulletPool.GetObject();
         bulletGameObject.transform.position = Vector2.zero;
         bulletGameObject.transform.localPosition = this.transform.position;
-        bulletGameObject.SetActive(true);
         bulletGameObject.GetComponent<Bullet>().Damage = shootingDamage;
         bulletGameObject.GetComponent<Bullet>().Velocity = bulletVelocity;
 

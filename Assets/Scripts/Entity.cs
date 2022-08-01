@@ -50,7 +50,7 @@ public class Entity : MonoBehaviour
         {
             _currentLifesCount -= bullet.Damage;
             LifesCountUpdated?.Invoke(_currentLifesCount);
-            Debug.Log("Current lives count: " + this.gameObject + ": " + _currentLifesCount);
+            Debug.Log("[debug] Current lives count: " + this.gameObject + ": " + _currentLifesCount);
         }
     }
 

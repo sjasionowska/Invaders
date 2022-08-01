@@ -6,6 +6,9 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class Bullet : MonoBehaviour
 {
+    [SerializeField]
+    private float _setInactiveAfterSeconds;
+
     private float _velocity;
 
     private Vector2 _movement = new(0, 1);
@@ -17,6 +20,8 @@ public class Bullet : MonoBehaviour
     private bool _shotByPlayer;
 
     private bool _shotByEnemy;
+
+    private bool _canMove;
 
     public bool ShotByEnemy
     {
@@ -70,6 +75,7 @@ public class Bullet : MonoBehaviour
     public void Shoot()
     {
         StartCoroutine(nameof(ShootWithFrequency));
+        StartCoroutine(nameof(StopMovingAfterTime));
     }
 
     private void OnEnable()
@@ -79,11 +85,29 @@ public class Bullet : MonoBehaviour
 
     private IEnumerator ShootWithFrequency()
     {
+        if (!_canMove) yield return null;
+
         for (; ; )
         {
             _rigidbody.MovePosition(_rigidbody.position + _movement * _velocity * Time.fixedDeltaTime);
             yield return new WaitForSeconds(0.001f);
         }
+    }
+
+    private IEnumerator StopMovingAfterTime()
+    {
+        //Print the time of when the function is first called.
+        Debug.Log("Started Coroutine at timestamp : " + Time.time);
+
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(_setInactiveAfterSeconds);
+
+        _canMove = false;
+        this.gameObject.SetActive(false);
+        StopCoroutine(nameof(ShootWithFrequency));
+
+        //After we have waited 5 seconds print the time again.
+        Debug.Log("Finished Coroutine at timestamp : " + Time.time);
     }
 
 
