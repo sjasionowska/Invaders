@@ -11,8 +11,6 @@ public class Bullet : MonoBehaviour
 
     private float _velocity;
 
-    private Vector2 _movement = new(0, 1);
-
     private int _damage = 1;
 
     private Rigidbody2D _rigidbody;
@@ -31,6 +29,23 @@ public class Bullet : MonoBehaviour
     public bool ShotByPlayer
     {
         get; set;
+    }
+
+    private Vector2 Movement
+    {
+        get
+        {
+            if (!ShotByPlayer && !ShotByEnemy)
+            {
+                Debug.LogError("Movement vector of a bullet can be only get for a Player or an Enemy.");
+                return Vector2.zero;
+            }
+
+            if (ShotByPlayer) return new(0, 1);
+            
+            return new(0, -1);
+        }
+
     }
 
     public int Damage
@@ -89,7 +104,7 @@ public class Bullet : MonoBehaviour
 
         for (; ; )
         {
-            _rigidbody.MovePosition(_rigidbody.position + _movement * _velocity * Time.fixedDeltaTime);
+            _rigidbody.MovePosition(_rigidbody.position + Movement * _velocity * Time.fixedDeltaTime);
             yield return new WaitForSeconds(0.001f);
         }
     }
@@ -106,6 +121,8 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("ShotByPlayer " + ShotByPlayer);
+
         if ((ShotByPlayer && collision.CompareTag("Enemy")
             || (ShotByEnemy && collision.CompareTag("Player"))))
             this.gameObject.SetActive(false);

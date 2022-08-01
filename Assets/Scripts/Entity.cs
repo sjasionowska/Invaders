@@ -68,7 +68,7 @@ public class Entity : MonoBehaviour
 
     private void Die()
     {
-        _enemiesManager.OnChildDied();
+        if(_isEnemy) _enemiesManager.OnChildDied();
         Destroy(this.gameObject);
     }
 }

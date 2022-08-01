@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingDamage: 1
   bulletVelocity: 10
-  _reloadTime: 1
+  _reloadTime: 3
   _shootingProbability: 10
 --- !u!61 &-7094575652510491754
 BoxCollider2D:

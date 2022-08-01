@@ -26,6 +26,11 @@ public class Shooter : MonoBehaviour
 
     private void Start()
     {
+        OnStart();
+    }
+
+    protected virtual void OnStart()
+    {
         _bulletPool = (BulletPool)FindObjectOfType(typeof(BulletPool));
 
         if (_bulletPool == null) Debug.LogError("Could not find an object of type BulletPool.");
@@ -43,19 +48,7 @@ public class Shooter : MonoBehaviour
         if (!_loaded) return;
 
         var bulletGameObject = _bulletPool.GetObject();
-        bulletGameObject.transform.position = Vector2.zero;
-        bulletGameObject.transform.localPosition = this.transform.position;
-        bulletGameObject.GetComponent<Bullet>().Damage = shootingDamage;
-        bulletGameObject.GetComponent<Bullet>().Velocity = bulletVelocity;
-
-        if (_isEnemy) bulletGameObject.GetComponent<Bullet>().ShotByEnemy = true;
-        else if (_isPlayer) bulletGameObject.GetComponent<Bullet>().ShotByPlayer = true;
-        else
-        {
-            Debug.LogError("Bullet can be shot only by a player or an enemy.");
-            return;
-        }
-
+        PrepareBullet(bulletGameObject);
         bulletGameObject.GetComponent<Bullet>().Shoot();
 
         _loaded = false;
@@ -64,19 +57,43 @@ public class Shooter : MonoBehaviour
         StartCoroutine(nameof(Load));
     }
 
+    private void PrepareBullet(GameObject bulletObject)
+    {
+        bulletObject.transform.position = Vector2.zero;
+        bulletObject.transform.localPosition = this.transform.position;
+        bulletObject.GetComponent<Bullet>().Damage = shootingDamage;
+        bulletObject.GetComponent<Bullet>().Velocity = bulletVelocity;
+
+        if (_isEnemy)
+        {
+            bulletObject.GetComponent<Bullet>().ShotByEnemy = true;
+            bulletObject.GetComponent<Bullet>().ShotByPlayer = false;
+        }
+        else if (_isPlayer)
+        {
+            bulletObject.GetComponent<Bullet>().ShotByPlayer = true;
+            bulletObject.GetComponent<Bullet>().ShotByEnemy = false;
+        }
+        else
+        {
+            Debug.LogError("Bullet can be shot only by a player or an enemy.");
+            return;
+        }
+    }
+
     private void SetUnloadedColor()
     {
-        this.gameObject.GetComponent<SpriteRenderer>().color = new Color(_defaultColor.r, _defaultColor.b, _defaultColor.g, 0.5f);
+        this.gameObject.GetComponent<SpriteRenderer>().color = new Color(_defaultColor.r, _defaultColor.g, _defaultColor.b, 0.5f);
     }
 
     private void SetLoadedColor()
     {
-        this.gameObject.GetComponent<SpriteRenderer>().color = new Color(_defaultColor.r, _defaultColor.b, _defaultColor.g, _defaultColor.a);
+        this.gameObject.GetComponent<SpriteRenderer>().color = new Color(_defaultColor.r, _defaultColor.g, _defaultColor.b, _defaultColor.a);
     }
 
     private IEnumerator Load()
     {
-        if(_loaded) yield return null;
+        if (_loaded) yield return null;
 
         yield return new WaitForSeconds(_reloadTime);
 
