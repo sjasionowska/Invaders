@@ -15,18 +15,18 @@ public class Entity : MonoBehaviour
 
     private bool _isPlayer;
 
-    public event Action<int> LifesCountUpdated;
+    public event Action<int> LivesCountUpdated;
 
     private EnemiesManager _enemiesManager;
 
     private void Awake()
     {
-        LifesCountUpdated += OnLifesCountUpdated;
+        LivesCountUpdated += OnLivesCountUpdated;
     }
 
     private void OnDestroy()
     {
-        LifesCountUpdated -= OnLifesCountUpdated;
+        LivesCountUpdated -= OnLivesCountUpdated;
     }
 
     private void Start()
@@ -56,19 +56,19 @@ public class Entity : MonoBehaviour
         if ((bullet.ShotByPlayer && _isEnemy) || (bullet.ShotByEnemy && _isPlayer))
         {
             _currentLifesCount -= bullet.Damage;
-            LifesCountUpdated?.Invoke(_currentLifesCount);
+            LivesCountUpdated?.Invoke(_currentLifesCount);
             Debug.Log("[debug] Current lives count: " + this.gameObject + ": " + _currentLifesCount);
         }
     }
 
-    private void OnLifesCountUpdated(int currentLifesCount)
+    private void OnLivesCountUpdated(int currentLifesCount)
     {
         if (currentLifesCount <= 0) Die();
     }
 
     private void Die()
     {
-        if(_isEnemy) _enemiesManager.OnChildDied();
+        if (_isEnemy) _enemiesManager.OnChildDied();
         Destroy(this.gameObject);
     }
 }

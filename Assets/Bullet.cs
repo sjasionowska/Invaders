@@ -121,8 +121,6 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("ShotByPlayer " + ShotByPlayer);
-
         if ((ShotByPlayer && collision.CompareTag("Enemy")
             || (ShotByEnemy && collision.CompareTag("Player"))))
             this.gameObject.SetActive(false);
